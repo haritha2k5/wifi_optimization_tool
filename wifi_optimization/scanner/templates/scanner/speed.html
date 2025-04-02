@@ -1,0 +1,7 @@
+<h2><b>Speed Test</b></h2>
+<p>Download Speed: <b>{{ speed.download }}</b> Mbps</p>
+<p>Upload Speed: <b>{{ speed.upload }}</b> Mbps</p>
+{% if speed.error %}
+<p style="color: red;">Speed Test Error: {{ speed.error }}</p>
+{% endif %}
+<a href="{% url 'dashboard' %}">Back to Dashboard</a>
