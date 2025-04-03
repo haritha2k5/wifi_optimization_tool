@@ -4,19 +4,20 @@
         <th>SSID</th>
         <th>Signal Strength (dBm)</th>
         <th>Channel</th>
-        <th>Frequency (MHz)</th>
         <th>Security</th>
     </tr>
     {% for net in networks %}
     <tr>
         <td>{{ net.ssid }}</td>
-        <td>{{ net.signal_strength }}</td>
-        <td>{{ net.channel }}</td>
-        <td>{{ net.frequency }}</td>
-        <td>{{ net.security }}</td>
+        <td>{{ net.signal_strength|default:"N/A" }}</td>
+        <td>{{ net.channel|default:"N/A" }}</td>
+        <td>{{ net.security|default:"N/A" }}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="5">No networks found</td></tr>
+    <tr><td colspan="4">No networks found</td></tr>
     {% endfor %}
 </table>
+{% if recommended_channel %}
+<p><b>Recommended Channel:</b> {{ recommended_channel }} (least interference)</p>
+{% endif %}
 <a href="{% url 'dashboard' %}">Back to Dashboard</a>
