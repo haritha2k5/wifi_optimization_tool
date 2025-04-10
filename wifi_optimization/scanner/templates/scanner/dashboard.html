@@ -1,3 +1,67 @@
-<h2><b>Dashboard</b></h2>
-<button onclick="window.location.href='{% url 'scan_wifi' %}'">WiFi Scan</button>
-<button onclick="window.location.href='{% url 'get_speed_test' %}'">Speed Test</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Optimization Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            color: #ff0000;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 30px;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            border: 2px solid #ff0000;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            width: 250px;
+        }
+        button:hover {
+            background-color: black;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <h2><b>WiFi Optimization Dashboard</b></h2>
+
+    <div class="btn-container">
+        <button onclick="window.location.href='{% url 'scan_wifi' %}'">📡 WiFi Scan</button>
+        <button onclick="window.location.href='{% url 'get_speed_test' %}'">🚀 Speed Test</button>
+        <button onclick="window.location.href='{% url 'ping_test' %}'">📶 Ping Test</button>
+        <button onclick="window.location.href='{% url 'network_info' %}'">🌐 Network Info</button>
+        <button onclick="window.location.href='{% url 'best_channel' %}'">📡 Best WiFi Channel</button>
+        <button onclick="window.location.href='{% url 'connected_devices' %}'">📱 Connected Devices</button> 
+    </div>
+
+    <h1>THANK YOU</h1>
+
+</body>
+</html>

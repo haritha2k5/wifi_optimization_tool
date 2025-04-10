@@ -1,7 +1,65 @@
-<h2><b>Speed Test</b></h2>
-<p>Download Speed: <b>{{ speed.download }}</b> Mbps</p>
-<p>Upload Speed: <b>{{ speed.upload }}</b> Mbps</p>
-{% if speed.error %}
-<p style="color: red;">Speed Test Error: {{ speed.error }}</p>
-{% endif %}
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            color: #ff0000;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        b {
+            color: #ff0000;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #ff0000;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        a:hover {
+            background-color: black;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <h2><b>Speed Test</b></h2>
+
+    <p>Download Speed: <b>{{ speed.download }}</b> Mbps</p>
+    <p>Upload Speed: <b>{{ speed.upload }}</b> Mbps</p>
+
+    {% if speed.error %}
+    <p class="error">Speed Test Error: {{ speed.error }}</p>
+    {% endif %}
+
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+
+</body>
+</html>

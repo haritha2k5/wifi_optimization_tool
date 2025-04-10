@@ -1,23 +1,89 @@
-<h2><b>WiFi Network Scan</b></h2>
-<table border="1">
-    <tr>
-        <th>SSID</th>
-        <th>Signal Strength (dBm)</th>
-        <th>Channel</th>
-        <th>Security</th>
-    </tr>
-    {% for net in networks %}
-    <tr>
-        <td>{{ net.ssid }}</td>
-        <td>{{ net.signal_strength|default:"N/A" }}</td>
-        <td>{{ net.channel|default:"N/A" }}</td>
-        <td>{{ net.security|default:"N/A" }}</td>
-    </tr>
-    {% empty %}
-    <tr><td colspan="4">No networks found</td></tr>
-    {% endfor %}
-</table>
-{% if recommended_channel %}
-<p><b>Recommended Channel:</b> {{ recommended_channel }} (least interference)</p>
-{% endif %}
-<a href="{% url 'dashboard' %}">Back to Dashboard</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Network Scan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            color: #ff0000;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #222;
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        th, td {
+            border: 2px solid #ff0000;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #ff0000;
+            color: black;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        tr:nth-child(odd) {
+            background-color: #222;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #ff0000;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        a:hover {
+            background-color: black;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <h2><b>WiFi Network Scan</b></h2>
+
+    <table>
+        <tr>
+            <th>SSID</th>
+            <th>Signal Strength (dBm)</th>
+            <th>Channel</th>
+            <th>Security</th>
+        </tr>
+        {% for net in networks %}
+        <tr>
+            <td>{{ net.ssid }}</td>
+            <td>{{ net.signal_strength|default:"N/A" }}</td>
+            <td>{{ net.channel|default:"N/A" }}</td>
+            <td>{{ net.security|default:"N/A" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No networks found</td></tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92d8cf13ea91bf81',t:'MTc0NDE4OTE3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
